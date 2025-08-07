@@ -12,4 +12,10 @@ public class HelloController {
     public String index() {
         return "index";
     }
+
+
+    @GetMapping("/saveForm")
+    public String saveForm() {
+        return "board/saveForm";
+    }
 } 

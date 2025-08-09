@@ -14,8 +14,8 @@ public class HelloController {
     }
 
 
-    @GetMapping("/saveForm")
+    @GetMapping("/product/saveForm")
     public String saveForm() {
-        return "board/saveForm";
+        return "product/saveForm";
     }
 } 

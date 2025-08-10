@@ -1,4 +1,4 @@
-package com.metacoding.spring_blog;
+package com.metacoding.springv1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,3 +11,4 @@ public class SpringBlogApplication {
 	}
 
 }
+ 

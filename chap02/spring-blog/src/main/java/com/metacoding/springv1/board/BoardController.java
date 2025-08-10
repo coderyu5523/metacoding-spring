@@ -1,4 +1,4 @@
-package com.metacoding.spring_blog.board;
+package com.metacoding.springv1.board;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,15 +13,15 @@ public class BoardController {
 
     @GetMapping("/board/save-form")
     public String saveForm() {
-        return "board/saveForm";
+        return "board/save-form";
     }
 
-    @GetMapping("/board/update-form")
+    @GetMapping("/board/1/update-form")
     public String updateForm() {
-        return "board/updateForm";
+        return "board/update-form";
     }
 
-    @GetMapping("/board/detail")
+    @GetMapping("/board/1")
     public String detail() {
         return "board/detail";
     }

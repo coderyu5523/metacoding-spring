@@ -27,7 +27,7 @@ public class BoardService {
     }
 
 
-    public DTO 게시글상세(Integer id) {
+    public BoardResponse.DTO 게시글상세(Integer id) {
 
         Board board = boardRepository.findById(id); // pk 로 조회
         BoardResponse.DTO dto = new BoardResponse.DTO(board); // DTO 담기기

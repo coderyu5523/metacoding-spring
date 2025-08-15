@@ -19,7 +19,7 @@ public class BoardController {
     public String index(HttpServletRequest request) {
 
         List<BoardResponse.DTO> boards = boardService.게시글목록();
-        request.setAttribute("boards", boards);
+        request.setAttribute("models", boards);
         return "index";
     }
 
@@ -36,7 +36,7 @@ public class BoardController {
     @GetMapping("/boards/{id}")
     public String detail(HttpServletRequest request, @PathVariable Integer id) {
         BoardResponse.DTO board = boardService.게시글상세(id);
-        request.setAttribute("board", board);
+        request.setAttribute("model", board);
         
         return "board/detail";
     }

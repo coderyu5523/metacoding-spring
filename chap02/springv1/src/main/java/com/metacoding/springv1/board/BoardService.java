@@ -1,29 +1,38 @@
 package com.metacoding.springv1.board;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metacoding.springv1.board.BoardResponse.DTO;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Service
 public class BoardService {
 
-    @Autowired
-    private BoardRepository boardRepository;
+    private final BoardRepository boardRepository;
 
-    public List<DTO> 게시글목록() {
+    public List<BoardResponse.DTO> 게시글목록() {
 
         List<Board> boards = boardRepository.findAll(); // board 엔티티 조회
 
-        List<DTO> dtoList = new ArrayList<>(); // List 객체 생성
+        List<BoardResponse.DTO> dtoList = boards.stream()
+            .map(board -> new BoardResponse.DTO(board))
+            .collect(Collectors.toList());
 
-        for (Board board : boards) {   // 반복문으로 boards 객체를 DTO 에 하나씩 담음
-            dtoList.add(new BoardResponse.DTO(board));
-        }
         return dtoList;
+    }
+
+
+    public DTO 게시글상세(Integer id) {
+
+        Board board = boardRepository.findById(id); // pk 로 조회
+        BoardResponse.DTO dto = new BoardResponse.DTO(board); // DTO 담기기
+
+        return dto;
     }
 
     

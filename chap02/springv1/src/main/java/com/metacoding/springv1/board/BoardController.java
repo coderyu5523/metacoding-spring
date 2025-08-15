@@ -2,22 +2,24 @@ package com.metacoding.springv1.board;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class BoardController {
 
-    @Autowired
-    private BoardService boardService;
+    private final BoardService boardService;
     
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(HttpServletRequest request) {
 
         List<BoardResponse.DTO> boards = boardService.게시글목록();
-        model.addAttribute("boards", boards);
+        request.setAttribute("boards", boards);
         return "index";
     }
 
@@ -31,8 +33,11 @@ public class BoardController {
         return "board/update-form";
     }
 
-    @GetMapping("/boards/1")
-    public String detail() {
+    @GetMapping("/boards/{id}")
+    public String detail(HttpServletRequest request, @PathVariable Integer id) {
+        BoardResponse.DTO board = boardService.게시글상세(id);
+        request.setAttribute("board", board);
+        
         return "board/detail";
     }
 

@@ -1,7 +1,47 @@
 package com.metacoding.springv1.board;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-public interface BoardRepository extends JpaRepository<Board, Integer>{
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
+
+@Repository
+public class BoardRepository{
+
+    @Autowired
+    private EntityManager em;
+
+    // 게시글 조회하기  
+    public Board findById(int id){
+        
+        Board board = em.find(Board.class, id);
+        return board;
+
+    }   
+
+    // 전체 게시글 조회하기
+    public List<Board> findAll(){
+
+        List<Board> boards = em.createQuery("select b from Board b", Board.class).getResultList();
+        return boards;
+
+    }
     
+    // 게시글 저장하기
+    @Transactional
+    public void save(Board board){
+        
+         em.persist(board);
+    }
+
+    // 게시글 삭제하기
+    @Transactional
+    public void deleteById(int id) {
+        em.createQuery("delete from Board b where b.id = :id")
+          .setParameter("id", id)
+          .executeUpdate();
+    }
 }

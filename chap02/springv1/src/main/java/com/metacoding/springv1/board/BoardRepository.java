@@ -26,6 +26,7 @@ public class BoardRepository{
     public List<Board> findAll(){
 
         List<Board> boards = em.createQuery("select b from Board b", Board.class).getResultList();
+
         return boards;
 
     }

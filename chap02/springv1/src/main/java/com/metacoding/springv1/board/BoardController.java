@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +18,9 @@ public class BoardController {
     
     @GetMapping("/")
     public String index(HttpServletRequest request) {
-
         List<BoardResponse.DTO> boards = boardService.게시글목록();
         request.setAttribute("models", boards);
+
         return "index";
     }
 
@@ -39,6 +40,11 @@ public class BoardController {
         request.setAttribute("model", board);
         
         return "board/detail";
+    }
+    @PostMapping("/boards/save")
+    public String save(BoardRequest.SaveDTO requestDTO){
+        boardService.게시글추가(requestDTO);
+        return "redirect:/";
     }
 
 

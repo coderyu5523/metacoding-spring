@@ -41,5 +41,16 @@ public class BoardService {
 
     }
 
+    @Transactional
+    public void 게시글삭제(Integer id){
+        boardRepository.deleteById(id);
+    }
+
+    public BoardResponse.DTO 게시글수정폼(Integer id){
+        Board board = boardRepository.findById(id);
+        BoardResponse.DTO dto = new BoardResponse.DTO(board);
+        return dto;
+    }
+
     
 }

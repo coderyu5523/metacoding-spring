@@ -4,10 +4,14 @@
 
     <!-- 수정삭제버튼 -->
     <div class="d-flex justify-content-end">
-        <button class="btn me-1" style="background-color: #999AA0; color: white;">                        
+        <form action="/boards/{{model.id}}/update-form" method="get" enctype="application/x-www-form-urlencoded">
+            <button type="submit" class="btn me-1" style="background-color: #999AA0; color: white;"> 
+        </form>                       
             수정
         </button>
-        <button class="btn btn-outline-secondary">삭제</button>
+        <form action="/boards/{{model.id}}/delete" method="post" enctype="application/x-www-form-urlencoded">
+            <button type="submit" class="btn btn-outline-secondary">삭제</button>
+        </form>
     </div>
 
 

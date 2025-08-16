@@ -29,8 +29,10 @@ public class BoardController {
         return "board/save-form";
     }
 
-    @GetMapping("/boards/1/update-form")
-    public String updateForm() {
+    @GetMapping("/boards/{id}/update-form")
+    public String updateForm(HttpServletRequest request, @PathVariable Integer id) {
+        BoardResponse.DTO board = boardService.게시글수정폼(id);
+        request.setAttribute("model", board);
         return "board/update-form";
     }
 
@@ -44,6 +46,12 @@ public class BoardController {
     @PostMapping("/boards/save")
     public String save(BoardRequest.SaveDTO requestDTO){
         boardService.게시글추가(requestDTO);
+        return "redirect:/";
+    }
+
+    @PostMapping("/boards/{id}/delete")
+    public String delete(@PathVariable Integer id){
+        boardService.게시글삭제(id);
         return "redirect:/";
     }
 

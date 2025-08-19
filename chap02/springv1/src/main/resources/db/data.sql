@@ -1,13 +1,13 @@
-insert into board_tb (title, content, created_at) values ('제목1', '스프링 공부중1', now()); 
-insert into board_tb (title, content, created_at) values ('제목2', '스프링 공부중2', now()); 
+
+insert into user_tb (username, password, email,created_at) values ('ssar', '1234', 'ssar@metacoding.com',now());
+insert into user_tb (username, password, email,created_at) values ('cos', '1234', 'cos@metacoding.com',now());
+
+
+insert into board_tb (title, content, created_at,user_id) values ('제목1', '스프링 공부중1', now(),1); 
+insert into board_tb (title, content, created_at,user_id) values ('제목2', '스프링 공부중2', now(),1); 
 
 
 
-
-// em.persist()
-insert into board_tb (title, content, created_at) values ('제목3', '내용3', now()); 
-
-// em.flush() 실행 시 영속성화된 객체를 데이터베이스에 반영
 
 
 

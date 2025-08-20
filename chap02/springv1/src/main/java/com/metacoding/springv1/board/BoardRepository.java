@@ -33,8 +33,7 @@ public class BoardRepository{
     
     // 게시글 저장하기
     @Transactional
-    public void save(Board board){
-        
+    public void save(Board board){   
          em.persist(board);
     }
 

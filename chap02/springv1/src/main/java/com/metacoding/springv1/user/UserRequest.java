@@ -11,6 +11,7 @@ public class UserRequest {
         private String password;
         private String email;
 
+        // 객체 생성
         public User toEntity(){
             return User.builder()
             .username(username)

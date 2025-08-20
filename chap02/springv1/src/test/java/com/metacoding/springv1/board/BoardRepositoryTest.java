@@ -57,9 +57,9 @@ public class BoardRepositoryTest {
         List<Board> boards = boardRepository.findAll();
         System.out.println("=======================");
         System.out.println("게시글 수 : " + boards.size());
-        System.out.println("ID: " + boards.get(2).getId());
-        System.out.println("제목: " + boards.get(2).getTitle());
-        System.out.println("내용: " + boards.get(2).getContent());
+        System.out.println("ID: " + boards.get(1).getId());
+        System.out.println("제목: " + boards.get(1).getTitle());
+        System.out.println("내용: " + boards.get(1).getContent());
     
     }
 

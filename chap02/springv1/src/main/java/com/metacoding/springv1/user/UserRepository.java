@@ -18,11 +18,15 @@ public class UserRepository {
     }
 
     public User findByUsername(String username){
-        
-        User user = em.createQuery("select u from User u where u.username = :username", User.class)
-        .setParameter("username", username)
-        .getSingleResult();
+        try {
+           User user = em.createQuery("select u from User u where u.username = :username", User.class)
+            .setParameter("username", username)
+            .getSingleResult();
+            return user;
 
-        return user;
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 }

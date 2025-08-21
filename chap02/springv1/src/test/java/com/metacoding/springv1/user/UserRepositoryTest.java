@@ -32,7 +32,7 @@ public class UserRepositoryTest {
         //given
         String username = "ssar";
         //when
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username).get();
         //eye
         System.out.println("=======================");
         System.out.println("id : " + user.getId());

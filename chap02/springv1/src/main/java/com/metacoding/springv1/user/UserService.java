@@ -1,7 +1,9 @@
 package com.metacoding.springv1.user;
 
 import org.springframework.stereotype.Service;
-import com.metacoding.springv1._config.exception.Exception401;
+
+import com.metacoding.springv1._config.Exception401;
+
 import lombok.RequiredArgsConstructor;
 import jakarta.transaction.Transactional;
 

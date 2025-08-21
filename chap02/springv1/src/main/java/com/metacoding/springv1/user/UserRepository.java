@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
@@ -17,16 +18,11 @@ public class UserRepository {
         em.persist(user);   
     }
 
-    public User findByUsername(String username){
-        try {
-           User user = em.createQuery("select u from User u where u.username = :username", User.class)
+    public Optional<User> findByUsername(String username){
+        User user = em.createQuery("select u from User u where u.username = :username", User.class)
             .setParameter("username", username)
             .getSingleResult();
-            return user;
-
-        } catch (Exception e) {
-            return null;
-        }
-
+            
+        return Optional.ofNullable(user);
     }
 }

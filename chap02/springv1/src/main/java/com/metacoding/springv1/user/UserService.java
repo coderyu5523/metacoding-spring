@@ -14,10 +14,9 @@ public class UserService {
     @Transactional
     public void 회원가입(UserRequest.SaveDTO requestDTO){
         // 중복 체크
-        User userCheck = userRepository.findByUsername(requestDTO.getUsername());
-        if(userCheck != null){
+        if (userRepository.findByUsername(requestDTO.getUsername()).isPresent())
             throw new Exception401("이미 존재하는 아이디입니다.");
-        }
+        // 회원가입
         User user = requestDTO.toEntity();
         userRepository.save(user);
     }

@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.JoinColumn;
 
 @NoArgsConstructor
 @Data
@@ -30,7 +31,8 @@ public class Board {
     private  Timestamp createdAt;
 
     @ManyToOne // 다대일 관계 설정
-    private User user;
+    @JoinColumn(name = "user_id") // 외래 키지정
+    private User user; // 객체를 직접 참조
 
     @Builder
     public Board(String title, String content, User user) {

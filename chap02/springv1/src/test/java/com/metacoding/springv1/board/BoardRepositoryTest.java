@@ -1,14 +1,14 @@
 package com.metacoding.springv1.board;
 
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
+import org.springframework.context.annotation.Import;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 
+@Import(BoardRepository.class)
 @DataJpaTest
 public class BoardRepositoryTest {
 

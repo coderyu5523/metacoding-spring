@@ -3,7 +3,9 @@ package com.metacoding.springv1.user;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 
+@Import(UserRepository.class)
 @DataJpaTest
 public class UserRepositoryTest {
 
@@ -14,10 +16,10 @@ public class UserRepositoryTest {
     public void save_test(){
         //given
         User user = User.builder()
-        .username("user1")
-        .password("1234")
-        .email("user1@metacoding.com")
-        .build();
+            .username("user1")
+            .password("1234")
+            .email("user1@metacoding.com")
+            .build();
         //when
         userRepository.save(user);
         //eye

@@ -19,9 +19,11 @@ public class UserRepository {
     }
 
     public Optional<User> findByUsername(String username){
-        User user = em.createQuery("select u from User u where u.username = :username", User.class)
-            .setParameter("username", username)
-            .getSingleResult();        
-        return Optional.ofNullable(user);
+       Optional<User> user = em.createQuery("select u from User u where u.username = :username", User.class)
+                            .setParameter("username", username)
+                            .getResultList()
+                            .stream()
+                            .findFirst(); 
+        return user;
     }
 }

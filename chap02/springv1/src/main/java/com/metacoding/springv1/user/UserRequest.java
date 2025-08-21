@@ -20,4 +20,11 @@ public class UserRequest {
             .build();
         }
     }
+
+
+    @Data
+    public static class LoginDTO{
+        private String username;
+        private String password;
+    }
 }

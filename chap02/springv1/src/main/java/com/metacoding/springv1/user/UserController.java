@@ -4,12 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import lombok.RequiredArgsConstructor;
+import jakarta.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
 public class UserController {
 
     private final UserService userService;
+    private final HttpSession session;
 
     @GetMapping("/join-form")
     public String joinForm() {
@@ -25,5 +27,12 @@ public class UserController {
     public String join(UserRequest.SaveDTO requestDTO){
         userService.회원가입(requestDTO);
         return "redirect:/login-form";
+    }
+
+    @PostMapping("/login")
+    public String login(UserRequest.LoginDTO requestDTO){
+        User user = userService.로그인(requestDTO);
+        session.setAttribute("sessionUser", user);
+        return "redirect:/";
     }
 }

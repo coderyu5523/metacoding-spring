@@ -91,5 +91,42 @@ public class BoardRepositoryTest {
         System.out.println("게시글 수 : " + boards.size());
 
     }
+
+    @Test
+    public void findByIdEager_test(){
+        //given
+        int id = 1;
+        //when
+        Board board = boardRepository.findById(id).get();
+        //eye
+        System.out.println("=======================");
+        System.out.println("게시글 제목 : " + board.getTitle());
+        System.out.println("게시글 내용 : " + board.getContent());
+    }
+
+    @Test
+    public void findByIdLazy_test(){
+        //given
+        int id = 1;
+        //when
+        Board board = boardRepository.findById(id).get();
+        //eye
+        System.out.println("=======================");
+        System.out.println("게시글 제목 : " + board.getTitle());
+        System.out.println("게시글 내용 : " + board.getContent());
+    }
+    
+    @Test
+    public void findByIdLazyLoading_test(){
+        //given
+        int id = 1;
+        //when
+        Board board = boardRepository.findById(id).get();
+        //eye
+        System.out.println("=======================");
+        System.out.println("게시글 제목 : " + board.getTitle());
+        System.out.println("게시글 내용 : " + board.getContent());
+        System.out.println("게시글 작성자 : " + board.getUser().getUsername());
+    }
     
 }

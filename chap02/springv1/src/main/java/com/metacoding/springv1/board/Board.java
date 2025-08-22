@@ -15,6 +15,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.FetchType;
 
 @NoArgsConstructor
 @Data
@@ -30,7 +31,7 @@ public class Board {
     @CreationTimestamp // 자동으로 현재 시간 저장
     private  Timestamp createdAt;
 
-    @ManyToOne // 다대일 관계 설정
+    @ManyToOne(fetch = FetchType.LAZY) // 다대일 관계 설정
     @JoinColumn(name = "user_id") // 외래 키지정
     private User user; // 객체를 직접 참조
 

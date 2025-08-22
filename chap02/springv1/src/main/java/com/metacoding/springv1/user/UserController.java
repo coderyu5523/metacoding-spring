@@ -32,7 +32,13 @@ public class UserController {
     @PostMapping("/login")
     public String login(UserRequest.LoginDTO requestDTO){
         User user = userService.로그인(requestDTO);
-        session.setAttribute("sessionUser", user);
+        session.setAttribute("session", user);
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        session.invalidate();
         return "redirect:/";
     }
 }

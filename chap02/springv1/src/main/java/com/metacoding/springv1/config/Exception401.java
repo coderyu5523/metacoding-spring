@@ -1,4 +1,4 @@
-package com.metacoding.springv1._config;
+package com.metacoding.springv1.config;
 
 public class Exception401 extends RuntimeException {
     public Exception401(String msg) {

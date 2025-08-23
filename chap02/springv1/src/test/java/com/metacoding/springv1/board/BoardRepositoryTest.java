@@ -100,8 +100,7 @@ public class BoardRepositoryTest {
         Board board = boardRepository.findById(id).get();
         //eye
         System.out.println("=======================");
-        System.out.println("게시글 제목 : " + board.getTitle());
-        System.out.println("게시글 내용 : " + board.getContent());
+        System.out.println("Board ID : " + board.getId());
     }
 
     @Test
@@ -112,8 +111,7 @@ public class BoardRepositoryTest {
         Board board = boardRepository.findById(id).get();
         //eye
         System.out.println("=======================");
-        System.out.println("게시글 제목 : " + board.getTitle());
-        System.out.println("게시글 내용 : " + board.getContent());
+        System.out.println("Board ID : " + board.getId());
     }
     
     @Test
@@ -124,9 +122,20 @@ public class BoardRepositoryTest {
         Board board = boardRepository.findById(id).get();
         //eye
         System.out.println("=======================");
-        System.out.println("게시글 제목 : " + board.getTitle());
-        System.out.println("게시글 내용 : " + board.getContent());
-        System.out.println("게시글 작성자 : " + board.getUser().getUsername());
+        System.out.println("Board ID : " + board.getId());
+        System.out.println("=======================");
+        System.out.println("username : " + board.getUser().getUsername());
+        
     }
-    
+    @Test
+    public void findByIdJoinUser_test(){
+        //given
+        int id = 1;
+        //when
+        Board board = boardRepository.findByIdJoinUser(id).get();
+        //eye
+        System.out.println("=======================");
+        System.out.println("Board ID : " + board.getId());
+        System.out.println("username : " + board.getUser().getUsername());
+    }
 }

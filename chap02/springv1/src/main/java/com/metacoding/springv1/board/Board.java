@@ -1,21 +1,25 @@
 package com.metacoding.springv1.board;
 
 import java.sql.Timestamp;
+import java.util.List;
 
-import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.CreationTimestamp; // 추가
 
-import jakarta.persistence.ManyToOne; // 추가
-import com.metacoding.springv1.user.User; // 추가
+import com.metacoding.springv1.reply.Reply; // 추가
+import com.metacoding.springv1.user.User;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.FetchType;
 
 @NoArgsConstructor
 @Data
@@ -23,17 +27,20 @@ import jakarta.persistence.FetchType;
 @Table(name="board_tb") 
 public class Board {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)  // 자동 증가
+    @GeneratedValue (strategy = GenerationType.IDENTITY)  
     private Integer id;
     private  String title;
     private  String content;
 
-    @CreationTimestamp // 자동으로 현재 시간 저장
+    @CreationTimestamp 
     private  Timestamp createdAt;
 
-    @ManyToOne(fetch = FetchType.LAZY) // 다대일 관계 설정
-    @JoinColumn(name = "user_id") // 외래 키지정
-    private User user; // 객체를 직접 참조
+    @ManyToOne(fetch = FetchType.LAZY) 
+    @JoinColumn(name = "user_id") 
+    private User user; 
+
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY) // reply 필드 연결
+    private List<Reply> replies;
 
     @Builder
     public Board(String title, String content, User user) {

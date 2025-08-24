@@ -25,10 +25,11 @@ public class BoardService {
         return dtoList;
     }
 
-    public BoardResponse.DTO 게시글상세(Integer id) {
+    public BoardResponse.DetailDTO 게시글상세(Integer id) {
         //Board board = boardRepository.findById(id).get(); // pk 로 조회
-        Board board = boardRepository.findByIdJoinUser(id).orElseThrow(() -> new Exception404("게시글을 찾을 수 없습니다."));
-        BoardResponse.DTO dto = new BoardResponse.DTO(board); // DTO 담기기
+        //Board board = boardRepository.findByIdJoinUser(id).orElseThrow(() -> new Exception404("게시글을 찾을 수 없습니다."));
+        Board board = boardRepository.findByIdJoinUserAndReply(id).orElseThrow(() -> new Exception404("게시글을 찾을 수 없습니다."));
+        BoardResponse.DetailDTO dto = new BoardResponse.DetailDTO(board); // DTO 담기기
         return dto;
     }
 

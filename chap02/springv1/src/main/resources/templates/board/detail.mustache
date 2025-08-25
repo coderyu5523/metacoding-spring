@@ -28,7 +28,7 @@
     <div class="card mt-3">
         <!-- 댓글등록 -->
         <div class="card-body">
-            <form action="/reply/save" method="post">
+            <form action="/replies/save" method="post">
                 <textarea class="form-control" rows="2" name="comment"></textarea>
                 <div class="d-flex justify-content-end">
                 <button class="btn btn-secondary mt-1">                        
@@ -44,17 +44,17 @@
         </div>
         <div class="list-group">
             <!-- 댓글아이템 -->
-            {{#model.replyList}}
+            {{#model.replies}}
             <div class="list-group-item d-flex justify-content-between align-items-center">
                 <div class="d-flex">
                     <div class="px-1 me-1 bg-secondary text-white rounded">{{username}}</div>
                     <div>{{comment}}</div>
                 </div>
-                <form action="/reply/{{id}}/delete" method="post">
+                <form action="/replies/{{id}}/delete" method="post">
                     <button class="btn">🗑</button>
                 </form>
             </div>
-            {{/model.replyList}}
+            {{/model.replies}}
         </div>
     </div>
 </div>

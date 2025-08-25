@@ -31,7 +31,7 @@ public class BoardResponse {
         private String content;
         private Integer userId;
         private String username;
-        private List<ReplyDTO> replyList = new ArrayList<>();
+        private List<ReplyDTO> replies = new ArrayList<>();
 
         public DetailDTO(Board board) {
             this.id = board.getId();
@@ -39,7 +39,7 @@ public class BoardResponse {
             this.content = board.getContent();
             this.userId = board.getUser().getId();
             this.username = board.getUser().getUsername();
-            this.replyList = board.getReplies().stream()
+            this.replies = board.getReplies().stream()
                                 .map(reply -> new ReplyDTO(reply))
                                 .collect(Collectors.toList());
         }

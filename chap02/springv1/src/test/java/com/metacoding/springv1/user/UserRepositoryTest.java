@@ -42,5 +42,4 @@ public class UserRepositoryTest {
         System.out.println("email : " + user.getEmail());
     }
 
-  
 }

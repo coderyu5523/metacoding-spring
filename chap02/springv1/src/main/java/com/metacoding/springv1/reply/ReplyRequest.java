@@ -10,6 +10,7 @@ public class ReplyRequest {
     @Data
     public static class SaveDTO {
         private String comment;
+        private Integer boardId;
 
         public Reply toEntity(User user, Board board) {
             return Reply.builder()

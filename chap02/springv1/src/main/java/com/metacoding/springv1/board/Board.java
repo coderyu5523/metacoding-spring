@@ -1,6 +1,7 @@
 package com.metacoding.springv1.board;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp; // 추가
@@ -40,7 +41,7 @@ public class Board {
     private User user; 
 
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY) // reply 필드 연결
-    private List<Reply> replies;
+    private List<Reply> replies = new ArrayList<>();;
 
     @Builder
     public Board(String title, String content, User user) {

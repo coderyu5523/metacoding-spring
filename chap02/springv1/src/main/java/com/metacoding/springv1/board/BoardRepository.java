@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -27,13 +26,11 @@ public class BoardRepository{
     }
     
     // 게시글 저장하기
-    @Transactional
     public void save(Board board){   
          em.persist(board);
     }
 
     // 게시글 삭제하기
-    @Transactional
     public void deleteById(int id) {
         em.createQuery("delete from Board b where b.id = :id")
           .setParameter("id", id)

@@ -3,7 +3,6 @@ package com.metacoding.springv1.user;
 import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import java.util.Optional;
 
@@ -13,7 +12,6 @@ public class UserRepository {
 
     public final EntityManager em;
 
-    @Transactional
     public void save(User user){
         em.persist(user);   
     }

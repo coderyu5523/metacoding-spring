@@ -1,5 +1,6 @@
 package com.metacoding.springv1.reply;
 
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -7,6 +8,7 @@ import org.springframework.context.annotation.Import;
 
 import com.metacoding.springv1.board.Board;
 import com.metacoding.springv1.board.BoardRepository;
+import com.metacoding.springv1.config.Exception404;
 
 @Import({ReplyRepository.class,BoardRepository.class})
 @DataJpaTest
@@ -33,5 +35,17 @@ public class ReplyRepositoryTest {
         System.out.println("boardId : " + reply.getBoard().getId());
         System.out.println("username : " + reply.getBoard().getUser().getUsername());
         System.out.println("comment : " + reply.getComment());
+    }
+
+    @Test
+    public void deleteById_test(){
+        //given
+        Integer replyId = 1; 
+        Integer boardId = 1;
+        //when
+        replyRepository.deleteById(replyId);
+        //eye
+        Board board = boardRepository.findById(boardId).get();
+        System.out.println("Reply Count : " + board.getReplies().size());
     }
 }

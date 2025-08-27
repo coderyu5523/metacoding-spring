@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Import;
 
 import com.metacoding.springv1.board.Board;
 import com.metacoding.springv1.board.BoardRepository;
-import com.metacoding.springv1.config.Exception404;
 
 @Import({ReplyRepository.class,BoardRepository.class})
 @DataJpaTest

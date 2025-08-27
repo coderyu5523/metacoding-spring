@@ -16,12 +16,9 @@ public class ReplyRepository {
         em.persist(reply);
     }
 
-    public Optional<Reply> findByIdJoinBoard(Integer id) {
-        Optional<Reply> reply = em.createQuery("select r from Reply r join fetch r.board where r.id = :id", Reply.class)
-                        .setParameter("id", id)
-                        .getResultStream()
-                        .findFirst();        
-        return reply;
+    public Optional<Reply> findById(Integer id) {
+        Reply reply = em.find(Reply.class, id);
+        return Optional.ofNullable(reply);  
     }
 
     public void deleteById(Integer id) {

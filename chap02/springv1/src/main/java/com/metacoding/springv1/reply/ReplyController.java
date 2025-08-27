@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import com.metacoding.springv1.user.User;
 
 import lombok.RequiredArgsConstructor;
@@ -24,9 +24,9 @@ public class ReplyController {
     }
 
     @PostMapping("/replies/{id}/delete")
-    public String deleteById(@PathVariable Integer id) {
+    public String deleteById(@PathVariable Integer id, @RequestParam Integer boardId) {
         User sessionUser = (User) session.getAttribute("session");
-        int boardId = replyService.댓글삭제(id, sessionUser.getId());
+        replyService.댓글삭제(id, sessionUser.getId());
         return "redirect:/boards/" + boardId;
     }
 }

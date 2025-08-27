@@ -25,12 +25,11 @@ public class ReplyService {
     }
 
     @Transactional
-    public int 댓글삭제(Integer replyId, Integer sessionUserId) {
+    public void 댓글삭제(Integer replyId, Integer sessionUserId) {
         Reply reply = replyRepository.findByIdJoinBoard(replyId).orElseThrow(()->new Exception404("댓글을 찾을 수 없습니다."));
         if(reply.getUser().getId() != sessionUserId) {
             throw new Exception403("댓글을 삭제할 권한이 없습니다.");
         }
         replyRepository.deleteById(replyId);
-        return reply.getBoard().getId();
     }
 }

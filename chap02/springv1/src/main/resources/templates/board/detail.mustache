@@ -52,6 +52,7 @@
                     <div>{{comment}}</div>
                 </div>
                 <form action="/replies/{{id}}/delete" method="post">
+                <input type="hidden" name="boardId" value="{{model.id}}" />
                     <button class="btn">🗑</button>
                 </form>
             </div>

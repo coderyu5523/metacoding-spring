@@ -2,7 +2,7 @@ package com.metacoding.springv1.config;
 
 public class Script {
 
-    public static String back(String msg) {
+    public static String alertBack(String msg) {
         StringBuilder sb = new StringBuilder();
         sb.append("<script>");
         sb.append("alert('"+msg+"');");
@@ -20,7 +20,7 @@ public class Script {
         return sb.toString();
     }
 
-    public static String href(String path, String msg) {
+    public static String alertHref(String path, String msg) {
         StringBuilder sb = new StringBuilder();
         sb.append("<script>");
         sb.append("alert('"+msg+"');");
@@ -28,6 +28,4 @@ public class Script {
         sb.append("</script>");
         return sb.toString();
     }
-
-
 }
